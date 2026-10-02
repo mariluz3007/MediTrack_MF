@@ -1,0 +1,35 @@
+:root {
+    font-family: Arial, sans-serif;
+    color: #1f2937;
+    background: #f8fafc;
+}
+
+body {
+    margin: 0;
+}
+
+header {
+    padding: 1rem 2rem;
+    background: #0f766e;
+}
+
+header a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+main {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.form-field {
+    margin-bottom: 1rem;
+}
+
+.error {
+    display: block;
+    color: #b91c1c;
+}
