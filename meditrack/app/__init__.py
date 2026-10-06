@@ -1,3 +1,5 @@
+# Donde se configura la aplicación Flask, incluyendo la configuración de 
+# la base de datos y la instancia de la aplicación.
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
