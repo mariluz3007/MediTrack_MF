@@ -1,8 +1,20 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+    
+    {% block title %}Formulario de medicamento | Meditrack{% endblock %}
+    
+    {% block content %}
+        <h1>Formulario de medicamento</h1>
+        <p>Agrega aquí el formulario de medicamentos.</p>
+    {% endblock %}
+    
+</body>
+</html>
 
-{% block title %}Formulario de medicamento | Meditrack{% endblock %}
-
-{% block content %}
-    <h1>Formulario de medicamento</h1>
-    <p>Agrega aquí el formulario de medicamentos.</p>
-{% endblock %}
