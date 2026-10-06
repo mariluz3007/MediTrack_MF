@@ -1,3 +1,4 @@
+#Ojo: invetsigar que hace y como funciona la funcion Blueprint de Flask 
 from flask import Blueprint, render_template
 
 main = Blueprint("main", __name__)
