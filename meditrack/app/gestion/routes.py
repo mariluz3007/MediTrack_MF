@@ -9,7 +9,6 @@ gestion_bp = Blueprint(
     url_prefix="/medicamentos"
 )
 
-
 @gestion_bp.route("/nuevo", methods=["GET", "POST"])
 def crear_medicamento():
     form = MedicamentoForm()
@@ -30,7 +29,7 @@ def crear_medicamento():
 
         flash("Medicamento creado correctamente.", "success")
 
-        return redirect(url_for("consultas.lista_medicamentos"))
+        return redirect(url_for("main.dashboard"))
 
     return render_template(
         "gestion/formulario.html",
@@ -57,7 +56,7 @@ def editar_medicamento(id):
 
         flash("Medicamento actualizado correctamente.", "success")
 
-        return redirect(url_for("consultas.lista_medicamentos"))
+        return redirect(url_for("main.dashboard"))
 
     return render_template(
         "gestion/formulario.html",

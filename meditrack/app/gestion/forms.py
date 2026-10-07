@@ -56,7 +56,7 @@ class MedicamentoForm(FlaskForm):
                 message="La fecha de vencimiento es obligatoria."
             )
         ],
-        format="%d-%m-%Y"
+        format="%Y-%m-%d"
     )
 
     requiere_receta = BooleanField(

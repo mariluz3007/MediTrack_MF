@@ -1,25 +1,33 @@
 # Donde se configura la aplicación Flask, incluyendo la configuración de 
 # la base de datos y la instancia de la aplicación.
 from flask import Flask
-from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf.csrf import CSRFProtect
+from flask_migrate import Migrate
+from flask_wtf import CSRFProtect
+
+from config import Config
 
 db = SQLAlchemy()
 migrate = Migrate()
 csrf = CSRFProtect()
 
 
-def create_app(config_object="config.Config"):
+def create_app(config_object=None):
     app = Flask(__name__)
-    app.config.from_object(config_object)
+
+    if config_object:
+        app.config.from_object(config_object)
+    else:
+        app.config.from_object(Config)
 
     db.init_app(app)
     migrate.init_app(app, db)
     csrf.init_app(app)
 
     from app.routes import main
-
     app.register_blueprint(main)
+
+    from app.gestion.routes import gestion_bp
+    app.register_blueprint(gestion_bp)
 
     return app
