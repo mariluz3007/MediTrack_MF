@@ -1,3 +1,5 @@
+#Donde se configará la base de datos (usando SQLAlchemy), el modo de depuración, y 
+# otras variables de configuración necesarias.
 import os
 
 
