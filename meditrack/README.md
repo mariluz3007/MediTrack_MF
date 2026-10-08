@@ -1,6 +1,6 @@
 # Meditrack
 
-Esqueleto inicial de una aplicación Flask para gestionar medicamentos, clientes y ventas.
+Esqueleto inicial de una aplicación Flask para gestionar medicamentos.
 
 ## Ejecutar
 
