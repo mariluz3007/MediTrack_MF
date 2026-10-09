@@ -1,31 +1,44 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CDN de Bootstrap (CSS) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <!-- CDN de Bootstrap (JS) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+{% extends "base.html" %}
 
-    <title>Detalles del medicamento</title>
-</head>
-<body>
-    <body style="background-color: #EADFC9;"></body>
+{% block title %}{{ medicamento.nombre }} | Meditrack{% endblock %}
 
-    {% extends "base.html" %}
+{% block content %}
+    <h1>{{ medicamento.nombre }}</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Descripción</dt>
+        <dd class="col-sm-9">{{ medicamento.descripcion }}</dd>
 
-    {% block title %}Medicamentos | Meditrack{% endblock %}
+        <dt class="col-sm-3">Laboratorio</dt>
+        <dd class="col-sm-9">{{ medicamento.laboratorio }}</dd>
 
-    {% block content %}
-        <h1>Medicamentos</h1>
-        <p>Consulta aqui el listado de medicamentos.</p>
-        <tbody>
-        <table class="table table-striped">
-  ...       
-        </table>
-        </tbody>
+        <dt class="col-sm-3">Precio</dt>
+        <dd class="col-sm-9">${{ "%.2f"|format(medicamento.precio) }}</dd>
 
-    {% endblock %}
-</body>
-</html>
+        <dt class="col-sm-3">Stock</dt>
+        <dd class="col-sm-9">{{ medicamento.stock }}</dd>
+
+        <dt class="col-sm-3">Fecha de vencimiento</dt>
+        <dd class="col-sm-9">{{ medicamento.fecha_vencimiento.strftime("%d/%m/%Y") }}</dd>
+
+        <dt class="col-sm-3">Requiere receta</dt>
+        <dd class="col-sm-9">{{ "Sí" if medicamento.requiere_receta else "No" }}</dd>
+    </dl>
+
+    <a class="btn btn-secondary" href="{{ url_for('main.listarMeds') }}">
+        Volver a la lista
+    </a>
+    <a
+        class="btn btn-primary"
+        href="{{ url_for('gestion.editar_medicamento', id=medicamento.id) }}"
+    >
+        Editar
+    </a>
+    <form
+        class="d-inline"
+        method="POST"
+        action="{{ url_for('gestion.eliminar_medicamento', id=medicamento.id) }}"
+    >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+    </form>
+{% endblock %}
