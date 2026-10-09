@@ -1,10 +1,14 @@
+<html>
+    <header>
 {% extends "base.html" %}
 
 {% block title %}Medicamentos | Meditrack{% endblock %}
 
 {% block content %}
+</header>
+<body>
     <h1>Medicamentos</h1>
-
+    
     {% if medicamentos %}
         <div class="table-responsive">
             <table class="table table-striped align-middle">
@@ -46,3 +50,5 @@
         </a>
     {% endif %}
 {% endblock %}
+</body>
+</html>

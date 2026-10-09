@@ -2,10 +2,33 @@
     font-family: Arial, sans-serif;
     color: #1f2937;
     background: #f8fafc;
+
+    --mt-crema:  #F3EFE4;   /* fondo general */
+    --mt-gris:   #C1C4B9;   /* navbar, bordes */
+    --mt-arena:  #EADFC9;   /* tarjetas, cabeceras */
+    --mt-verde:  #779384;   /* acento principal */
+    --mt-verde-oscuro: #5d7868;
+    --mt-texto:  #26302a;
+
+    --bs-body-bg: var(--mt-crema);
+    --bs-body-color: var(--mt-texto);
+    --bs-border-color: var(--mt-gris);
+    --bs-primary: var(--mt-verde);
+    --bs-primary-rgb: 119, 147, 132;
+    --bs-link-color: var(--mt-verde-oscuro);
+    --bs-link-hover-color: var(--mt-texto);
+
 }
 
 body {
     margin: 0;
+    background-color: var(--mt-crema);
+    color: var(--mt-texto);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 72px; /* espacio para el navbar fixed-top */
 }
 
 header {
