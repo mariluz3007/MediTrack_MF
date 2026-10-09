@@ -13,8 +13,8 @@
 <body>
     <body style="background-color: #bda982;"></body>
     <header>
-        <!-- NOTA: No borrar el html de Dashboard si no se sabe conectar al html de base -->
         <a href="{{ url_for('main.dashboard') }}">Meditrack</a>
+<<<<<<< HEAD
        
         <nav class="navbar bg-body-#C1C4B9 fixed-top">
             <div class="container-fluid">
@@ -58,6 +58,13 @@
             </div>
         </nav>
                 </header>
+=======
+        <nav aria-label="Navegación principal">
+            <a href="{{ url_for('main.listarMeds') }}">Medicamentos</a>
+            <a href="{{ url_for('gestion.crear_medicamento') }}">Agregar medicamento</a>
+        </nav>
+    </header>
+>>>>>>> fef1329217275ea002a934905c7d5ab5a49ba65c
     <main>
         {% block content %}{% endblock %}
     </main>

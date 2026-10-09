@@ -1,19 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscar medicamentos form</title>
-</head>
-<body>
-    <!-- Para buscar y listar los medicamentos desde la DB -->
-    {% extends "base.html" %}
+{% extends "base.html" %}
 
-    {% block title %}Medicamentos | Meditrack{% endblock %}
+{% block title %}Medicamentos | Meditrack{% endblock %}
 
-    {% block content %}
-        <h1>Medicamentos</h1>
-        <p>Consulta aqui el listado de medicamentos.</p>
-    {% endblock %}
-</body>
-</html>
+{% block content %}
+    <h1>Medicamentos</h1>
+
+    {% if medicamentos %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Laboratorio</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Vencimiento</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medicamento in medicamentos %}
+                        <tr>
+                            <td>{{ medicamento.nombre }}</td>
+                            <td>{{ medicamento.laboratorio }}</td>
+                            <td>${{ "%.2f"|format(medicamento.precio) }}</td>
+                            <td>{{ medicamento.stock }}</td>
+                            <td>{{ medicamento.fecha_vencimiento.strftime("%d/%m/%Y") }}</td>
+                            <td>
+                                <a
+                                    class="btn btn-sm btn-primary"
+                                    href="{{ url_for('main.detallesMeds', medicamento_id=medicamento.id) }}"
+                                >
+                                    Ver detalles
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p>Aún no hay medicamentos registrados.</p>
+        <a class="btn btn-primary" href="{{ url_for('gestion.crear_medicamento') }}">
+            Agregar primer medicamento
+        </a>
+    {% endif %}
+{% endblock %}

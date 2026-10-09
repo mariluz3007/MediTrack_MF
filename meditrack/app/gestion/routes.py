@@ -29,10 +29,10 @@ def crear_medicamento():
 
         flash("Medicamento creado correctamente.", "success")
 
-        return redirect(url_for("main.dashboard"))
+        return redirect(url_for("main.listarMeds"))
 
     return render_template(
-        "gestion/formulario.html",
+        "formulario.html",
         form=form,
         titulo="Nuevo medicamento"
     )
@@ -56,10 +56,10 @@ def editar_medicamento(id):
 
         flash("Medicamento actualizado correctamente.", "success")
 
-        return redirect(url_for("main.dashboard"))
+        return redirect(url_for("main.listarMeds"))
 
     return render_template(
-        "gestion/formulario.html",
+        "formulario.html",
         form=form,
         titulo="Editar medicamento"
     )
@@ -74,4 +74,4 @@ def eliminar_medicamento(id):
 
     flash("Medicamento eliminado correctamente.", "success")
 
-    return redirect(url_for("consultas.lista_medicamentos"))
+    return redirect(url_for("main.listarMeds"))
