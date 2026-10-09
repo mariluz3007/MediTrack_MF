@@ -21,7 +21,8 @@ def crear_medicamento():
             precio=form.precio.data,
             stock=form.stock.data,
             fecha_vencimiento=form.fecha_vencimiento.data,
-            requiere_receta=form.requiere_receta.data
+            requiere_receta=form.requiere_receta.data,
+            # DONDE ESTA EL CAMPO DE FECHA DE REGISTRO?
         )
 
         db.session.add(medicamento)
@@ -51,6 +52,7 @@ def editar_medicamento(id):
         medicamento.stock = form.stock.data
         medicamento.fecha_vencimiento = form.fecha_vencimiento.data
         medicamento.requiere_receta = form.requiere_receta.data
+        # campo de fecha registro falta
 
         db.session.commit()
 
