@@ -1,17 +1,21 @@
 """Modelos de datos de la DB de Meditrack."""
 
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy import create_engine
-# from sqlalchemy import Column, Integer, String
+from datetime import datetime, timezone
 
-# base = declarative_base()
+from sqlalchemy import Boolean, Date, DateTime, Float, Integer, String, Text
 
-# #Donde debe de ir 
-# class Medicamento(base):
-#     # __tablename__ = 'medicamentos'
-#     # ID = Column(Integer(), primary_key=True)
-#     # nombre = Column(String(100), nullable=False)
-#     # laboratorio = Column(String(100), nullable=False)
+from app import db
 
-    
-#     pass
+
+class Medicamento(db.Model):
+    id = db.Column(Integer, primary_key=True)
+    nombre = db.Column(String(100), nullable=False)
+    descripcion = db.Column(Text, nullable=False)
+    laboratorio = db.Column(String(100), nullable=False)
+    precio = db.Column(Float, nullable=False)
+    stock = db.Column(Integer, nullable=False)
+    fecha_vencimiento = db.Column(Date, nullable=False)
+    requiere_receta = db.Column(Boolean, nullable=False)
+    fecha_registro = db.Column(
+        DateTime, nullable=False, default=lambda: datetime.now(timezone.utc)
+    )
